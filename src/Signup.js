@@ -1,15 +1,14 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, Pressable, ImageBackground } from 'react-native';
 import { TextInput, Headline, Button } from 'react-native-paper';
 import Constants from 'expo-constants';
 
-const image = { uri: './assets/background.png' };
-
-export default function HomeScreen({ navigation }) {
+export default function Signup({ navigation }) {
+  const [isPrivate1, showPass1]=useState(true);
+  const [isPrivate2, showPass2]=useState(true);
   return (
-    <ImageBackground source={image} resizeMode="cover">
       <View style={styles.container}>
-        <Headline style={styles.titleTextLarge}>Sign up</Headline>
+        <Text style={styles.titleTextLarge}>Sign up</Text>
         <Text style={styles.inputTitleText}>Name</Text>
         <TextInput
           underlineColor={'transparent'}
@@ -33,19 +32,19 @@ export default function HomeScreen({ navigation }) {
         />
         <Text style={styles.inputTitleText}>Password</Text>
         <TextInput
-          secureTextEntry={true}
+          secureTextEntry={isPrivate1}
           underlineColor={'transparent'}
           theme={{ colors: { primary: 'transparent', text: '#676767', placeholder: '#B0B0B0' } }}
-          right={<TextInput.Icon name="eye" mode="outlined" color="#548FBA"/>}
+          right={<TextInput.Icon onPress={() =>{showPass1(prev=>!prev)}} name={isPrivate1 ? 'eye' : 'eye-off'} mode="outlined" color="#548FBA"/>}
           style={styles.inputStyle}
           placeholder={'••••••••'}
         />
         <Text style={styles.inputTitleText}>Repeat password</Text>
         <TextInput
-          secureTextEntry={true}
+          secureTextEntry={isPrivate2}
           underlineColor={'transparent'}
           theme={{ colors: { primary: 'transparent', text: '#676767', placeholder: '#B0B0B0' } }}
-          right={<TextInput.Icon name="eye" mode="outlined" color="#548FBA"/>}
+          right={<TextInput.Icon onPress={() =>{showPass2(prev=>!prev)}} name={isPrivate2 ? 'eye' : 'eye-off'} mode="outlined" color="#548FBA"/>}
           style={styles.inputStyle}
           placeholder={'••••••••'}
         />
@@ -57,65 +56,63 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.buttonTextLight}>Sign up</Text>
         </Pressable>
       </View>
-    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: '2em',
-    height: 100,
-    flex:1,
+    padding: '6%',
+    flex: 1,
+    justifyContent: "center",
   },
   inputStyle: {
     fontFamily: 'Lato',
     fontWeight: 'bold',
-    fontSize: '16px',
-    lineHeight: '19px',
-    marginBottom: '1.5vh',
-    borderBottom: '2px solid #1C6EA4',
-    width: 'auto',
+    fontSize: 16,
+    lineHeight: 19,
+    marginBottom: 15,
+    borderBottomWidth: 2, 
+    borderBottomColor:'#1C6EA4',
     outline: 'none',
     backgroundColor: 'none',
-    height: 'auto',
+    height: 35,
   },
   inputTitleText: {
     fontFamily: 'Lato',
-    fontSize: '12px',
-    fontWeight: '700',
-    lineHeight: '14px',
-    letterSpacing: '0.04em',
+    fontSize: 12,
+    fontWeight: 'bold',
+    lineHeight: 14,
+    letterSpacing: 2,
     textAlign: 'left',
     color: '#548FBA',
   },
   buttonTextLight: {
     fontFamily: 'Lato',
-    fontSize: '16px',
-    fontWeight: '700',
-    lineHeight: '19px',
-    margin: 'auto',
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 19,
+    position: 'relative',
+    top: '25%',
+    textAlign: 'center',
     color: '#FFFFFF',
   },
   buttonSignIn: {
-    background: '#3E658A',
-    borderRadius: '45px',
-    width: '192px',
-    height: '37px',
-    marginTop: '2.2em',
+    backgroundColor: '#3E658A',
+    borderRadius: 45,
+    width: 192,
+    height: 37,
+    marginTop: '15%',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
   titleTextLarge: {
     fontFamily: 'Lato',
     fontWeight: 'bold',
-    fontSize: '38px',
+    fontSize: 38,
     textAlign: 'center',
-    letterSpacing: '0.15em',
-    position: 'relative',
+    letterSpacing: 5,
     width: '100%',
-    height: 'auto',
-    paddingTop: '1.6em',
-    paddingBottom: '1em',
+    marginBottom: 60,
     color: '#548FBA',
-  },
+  }
 });

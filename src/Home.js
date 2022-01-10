@@ -1,34 +1,34 @@
-import * as React from 'react';
-import { Text, View, StyleSheet, Pressable, ImageBackground } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Pressable, ImageBackground, Image} from 'react-native';
 import { TextInput, Headline, Button } from 'react-native-paper';
 import Constants from 'expo-constants';
 
-const image = { uri: './assets/background.png' };
-
-export default function Signup({ navigation }) {
+export default function HomeScreen({ navigation }) {
+  const [isPrivate, showPass]=useState(true);
   return (
-    <ImageBackground source={image} resizeMode="cover">
       <View style={styles.container}>
-        <Headline style={styles.titleTextLarge}>Sign in</Headline>
+      <ImageBackground source={require('./assets/home-bg.png')} resizeMode="cover" style={styles.bgImage}>
+      <Image source={require('./assets/logo.png')} resizeMode="cover" style={styles.logo}></Image>
+        <Text style={styles.titleTextLarge}>Sign in</Text>
         <Text style={styles.inputTitleText}>Email</Text>
         <TextInput
           underlineColor={'transparent'}
-          theme={{ colors: { primary: 'transparent', text: '#676767', placeholder: '#B0B0B0' } }}
+          theme={{ colors: { primary: 'transparent', text: '#676767', placeholder: '#B0B0B0'} }}
           style={styles.inputStyle}
           placeholder={'my.name@email.com'}
         />
         <Text style={styles.inputTitleText}>Password</Text>
         <TextInput
-          secureTextEntry={true}
+          secureTextEntry={isPrivate}
           underlineColor={'transparent'}
-          theme={{ colors: { primary: 'transparent', text: '#676767', placeholder: '#B0B0B0' } }}
-          right={<TextInput.Icon name="eye" mode="outlined" color="#548FBA"/>}
+          theme={{ colors: { primary: 'transparent', text: '#676767', placeholder: '#B0B0B0'} }}
+          right={<TextInput.Icon onPress={() =>{showPass(prev=>!prev)}} name={isPrivate ? 'eye' : 'eye-off'} mode="outlined" color="#548FBA"/>}
           style={styles.inputStyle}
           placeholder={'••••••••'}
         />
         <Pressable
           onPress={() => {
-            navigation.navigate('List View');
+            navigation.navigate('Sign Up');
           }}>
           <Text style={styles.titleSubtextSmall}>Forgot password</Text>
         </Pressable>
@@ -53,102 +53,106 @@ export default function Signup({ navigation }) {
           }}>
           <Text style={styles.buttonTextDark}>Offline</Text>
         </Pressable>
+        </ImageBackground>
       </View>
-    </ImageBackground>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
-    padding: '2em',
-    height: 100,
     flex:1,
+  },
+  bgImage: {
+    padding: '6%',
+    flex: 1,
+    justifyContent: "center",
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 30,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   inputStyle: {
     fontFamily: 'Lato',
     fontWeight: 'bold',
-    fontSize: '16px',
-    lineHeight: '19px',
-    marginBottom: '1.5vh',
-    borderBottom: '2px solid #1C6EA4',
-    width: 'auto',
+    fontSize: 16,
+    lineHeight: 19,
+    marginBottom: 15,
+    borderBottomWidth: 2, 
+    borderBottomColor:'#1C6EA4',
     outline: 'none',
     backgroundColor: 'none',
-    height: 'auto',
+    height: 35,
   },
   inputTitleText: {
     fontFamily: 'Lato',
-    fontSize: '12px',
-    fontWeight: '700',
-    lineHeight: '14px',
-    letterSpacing: '0.04em',
+    fontSize: 12,
+    fontWeight: 'bold',
+    lineHeight: 14,
+    letterSpacing: 2,
     textAlign: 'left',
     color: '#548FBA',
   },
   buttonTextLight: {
     fontFamily: 'Lato',
-    fontSize: '16px',
-    fontWeight: '700',
-    lineHeight: '19px',
-    margin: 'auto',
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 19,
+    position: 'relative',
+    top: '25%',
+    textAlign: 'center',
     color: '#FFFFFF',
   },
   buttonTextDark: {
     fontFamily: 'Lato',
-    fontSize: '16px',
-    fontWeight: '700',
-    lineHeight: '19px',
-    margin: 'auto',
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 19,
+    position: 'relative',
+    top: '25%',
+    textAlign: 'center',
     color: '#548FBA',
   },
   buttonSignIn: {
-    background: '#3E658A',
-    borderRadius: '45px',
-    width: '192px',
-    height: '37px',
-    marginTop: '2em',
+    backgroundColor: '#3E658A',
+    borderRadius: 45,
+    width: 192,
+    height: 37,
+    marginTop: '15%',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
   buttonSignUp: {
-    background: '#FFFFFF',
-    borderRadius: '45px',
-    width: '122px',
-    height: '37px',
-    marginTop: '5em',
-    marginRight: 'auto',
-    top: '37px',
-    position: 'relative',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 45,
+    width: 122,
+    height: 37,
+    marginTop: '20%',
+    top: 37,
   },
   buttonOffline: {
-    background: '#FFFFFF',
-    borderRadius: '45px',
-    width: '122px',
-    height: '37px',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 45,
+    width: 122,
+    height: 37,
     marginLeft: 'auto',
-    position: 'relative',
   },
   titleTextLarge: {
     fontFamily: 'Lato',
     fontWeight: 'bold',
-    fontSize: '38px',
+    fontSize: 38,
     textAlign: 'center',
-    letterSpacing: '0.15em',
-    position: 'relative',
+    letterSpacing: 5,
     width: '100%',
-    height: 'auto',
-    paddingTop: '1.6em',
-    paddingBottom: '1.6em',
+    marginBottom: '10%',
     color: '#548FBA',
   },
   titleSubtextSmall: {
     fontFamily: 'Lato',
     fontWeight: 'bold',
-    fontSize: '14px',
-    textAlign: 'center',
-    position: 'relative',
-    height: 'auto',
+    fontSize: 14,
+    textAlign: 'left',
     color: '#929292',
-    marginRight: 'auto',
   }
 });
