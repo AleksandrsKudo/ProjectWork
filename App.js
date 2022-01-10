@@ -15,7 +15,7 @@ export default function App() {
     <Stack.Navigator initialRouteName="ListView" screenOptions={{headerShown: true}}>
       <Stack.Screen name="ListView" component={ListView}/>
       <Stack.Screen name="Home" component={HomeScreen}/>
-      <Stack.Screen name="SignUp" component={Signup}/>
+      <Stack.Screen name="Signup" component={Signup}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

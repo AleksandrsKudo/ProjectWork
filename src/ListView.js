@@ -5,7 +5,7 @@ import Constants from 'expo-constants';
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
-export default function ListView() {
+export default function ListView({ navigation }) {
   const [ddList, ddToggle]=useState(false);
   
   return (
@@ -21,6 +21,9 @@ export default function ListView() {
         style={styles.ddItem}
         title="Create new item"
         left={props => <List.Icon {...props} icon="plus-box" />}
+        onPress={() => {
+            navigation.navigate('Signup');
+          }}
         />
         <List.Item
         style={styles.ddItem}
@@ -31,6 +34,9 @@ export default function ListView() {
         style={styles.ddItem}
         title="Sing out"
         left={props => <List.Icon {...props} icon="close-box" />}
+        onPress={() => {
+            navigation.navigate('Signup');
+          }}
         />
       </List.Section>
     <Searchbar placeholder="Search" />
