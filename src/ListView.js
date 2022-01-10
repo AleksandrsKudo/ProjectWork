@@ -16,13 +16,13 @@ export default function ListView({ navigation }) {
       <Appbar.Action icon="magnify" onPress={() => {}} />
       <Appbar.Action icon={MORE_ICON} onPress={() =>{ddToggle(prev=>!prev)}} />
     </Appbar.Header>
-    <List.Section style={styles.ddSelect} display={ddList ? 'none' : 'inline'}>
+    <List.Section style={styles.ddSelect} visiblity={ddList ? 'hidden' : 'visible'}>
         <List.Item
         style={styles.ddItem}
         title="Create new item"
         left={props => <List.Icon {...props} icon="plus-box" />}
         onPress={() => {
-            navigation.navigate('Signup');
+            navigation.navigate('Editor');
           }}
         />
         <List.Item
@@ -35,7 +35,7 @@ export default function ListView({ navigation }) {
         title="Sing out"
         left={props => <List.Icon {...props} icon="close-box" />}
         onPress={() => {
-            navigation.navigate('Signup');
+            navigation.navigate('Sign Up');
           }}
         />
       </List.Section>
@@ -46,7 +46,7 @@ export default function ListView({ navigation }) {
 
 const styles = StyleSheet.create({
   ddSelect: {
-    display: 'inline',
+    visibility: 'visible',
     backgroundColor: '#FFFFFF',
   },
   ddItem: {
