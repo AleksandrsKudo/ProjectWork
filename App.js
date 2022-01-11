@@ -6,6 +6,7 @@ import HomeScreen from './src/Home';
 import ListView from './src/ListView';
 import Signup from './src/Signup';
 import Editor from './src/Editor';
+import Preview from './src/Preview';
 
 
 const Stack = createNativeStackNavigator();
@@ -13,11 +14,12 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="List View" screenOptions={{headerShown: true}}>
+      <Stack.Navigator initialRouteName="Preview" screenOptions={{headerShown: false}}>
         <Stack.Screen name="List View" component={ListView}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Sign Up" component={Signup}/>
         <Stack.Screen name="Editor" component={Editor}/>
+        <Stack.Screen name="Preview" component={Preview}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
