@@ -1,2 +1,3 @@
 FlatList example: https://snack.expo.dev/@vijaydemonz/flatlist-example
 Flatlist extraData informācija: https://reactnative.dev/docs/flatlist
+Attēlu pievienošana: https://snack.expo.dev/@aboutreact/image-example?session_id=snack-session-45GVESXWi

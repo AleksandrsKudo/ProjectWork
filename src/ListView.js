@@ -4,20 +4,21 @@ import { Appbar, Searchbar } from 'react-native-paper';
 import Constants from 'expo-constants';
 import objects from "./data.json"; // Data file for flatlist
 
-import ball from "./assets/ball.jpeg";
-
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 import DdMenu from './dd-menu';
 
 export default function ListView({ navigation }) {
+  console.log(objects);
   const [showDD, setShowDD] = React.useState(false)
 
   const [objectData, setObjectData] = React.useState(objects);
   const ItemView = ({item}) => { return (
       <View>
         <Text onPress={() => onItemClick(item)}>{item.name}, atrašanās vieta: {item.location}</Text>
-        <Image style={styles.img} source={ball}/>
+        <Image style={styles.img} source={{
+          uri: item.imgsrc
+        }}/>
       </View>
   )}
 
