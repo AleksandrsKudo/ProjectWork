@@ -1,34 +1,38 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { Text, View, StyleSheet, Platform, FlatList, Button } from 'react-native';
 import { Appbar, List, Searchbar } from 'react-native-paper';
 import Constants from 'expo-constants';
-import objects from "./data.json";
+import objects from "./data.json"; // Data file for flatlist
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
 import DdMenu from './dd-menu';
+//import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 export default function ListView({ navigation }) {
   const [showDD, setShowDD] = React.useState(false)
-  const [initialElements, changeEl] = useState([
-    { id: 1, name: "Zeķes"},
-    { id: 2, name: "Bumba"}
-  ]);
 
-  const [exampleState, setExampleState] = useState(initialElements);
-  const [idx, incr] = useState(2);
+  const [objectData, setObjectData] = React.useState(objects);
+  const ItemView = ({item}) => {
+    return (
+      <View>
+        <Text>{item.name}</Text>
+        <Text>{item.location}</Text>
+      </View>
+    )
+  }
+  const Item = ({name, location}) => (
+    <View>
+      <Text>{name}</Text>
+      <Text>{location}</Text>
+    </View>
+  )
 
   const addElement = () => {
-    var newArray = [...initialElements , {id : idx, text: "Object " + (idx+1) }];
-    incr(idx + 1);
-    console.log(initialElements.length);
-    setExampleState(newArray);
-    changeEl(newArray);
+    alert("Šeit pievieno jaunu ierakstu")
   }
 
-  console.log(objects);
-  console.log("End of JSON file");
-  
   return (
     <View>
     <Appbar.Header
@@ -43,8 +47,9 @@ export default function ListView({ navigation }) {
           onPress={addElement} />
     <FlatList
             keyExtractor = {item => item.id}  
-            data={exampleState}
-            renderItem = {item => (<Text>{item.item.text}</Text>)} />
+            data={objectData}
+            renderItem = {ItemView}
+    />
     </View>
   );
 }
