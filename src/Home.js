@@ -81,8 +81,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderBottomWidth: 2, 
     borderBottomColor:'#1C6EA4',
-    outline: 'none',
-    backgroundColor: 'none',
+    backgroundColor: 'transparent',
     height: 35,
   },
   inputTitleText: {
