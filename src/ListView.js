@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Platform, FlatList, Button } from 'react-native';
-import { Appbar, List, Searchbar } from 'react-native-paper';
+import { Text, View, StyleSheet, Platform, FlatList, Button, Image } from 'react-native';
+import { Appbar, Searchbar } from 'react-native-paper';
 import Constants from 'expo-constants';
 import objects from "./data.json"; // Data file for flatlist
+
+import ball from "./assets/ball.jpeg";
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
@@ -15,6 +17,7 @@ export default function ListView({ navigation }) {
   const ItemView = ({item}) => { return (
       <View>
         <Text onPress={() => onItemClick(item)}>{item.name}, atrašanās vieta: {item.location}</Text>
+        <Image style={styles.img} source={ball}/>
       </View>
   )}
 
@@ -57,5 +60,8 @@ export default function ListView({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-
+  img: {
+    width: 50,
+    height: 50
+  }
 });
