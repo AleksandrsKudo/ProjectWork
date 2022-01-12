@@ -51,7 +51,7 @@ export default function Signup({ navigation }) {
         <Pressable
           style={styles.buttonSignIn}
           onPress={() => {
-            navigation.navigate('List view');
+            navigation.navigate('List View');
           }}>
         <Text style={styles.buttonTextLight}>Sign up</Text>
         </Pressable>

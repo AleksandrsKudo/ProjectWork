@@ -35,7 +35,7 @@ export default function HomeScreen({ navigation }) {
         <Pressable
           style={styles.buttonSignIn}
           onPress={() => {
-            navigation.navigate('List view');
+            navigation.navigate('List View');
           }}>
           <Text style={styles.buttonTextLight}>Sign in</Text>
         </Pressable>

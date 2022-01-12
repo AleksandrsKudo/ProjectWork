@@ -14,8 +14,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: true}}>
-        <Stack.Screen name="List view" component={ListView}/>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+        <Stack.Screen name="List View" component={ListView}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
         <Stack.Screen name="Sign Up" component={Signup}/>
         <Stack.Screen name="Editor" component={Editor}/>
@@ -24,3 +24,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+

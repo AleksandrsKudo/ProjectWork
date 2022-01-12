@@ -3,18 +3,24 @@
 		"id": 1,
 		"name": "Bumba",
 		"location": "Virtuve",
+    "date": "17.11.2021",
+    "description": "This is a simple description",
 		"imgsrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Basketball.jpeg/655px-Basketball.jpeg"
 	},
 	{
 		"id": 2,
 		"name": "Zeķes",
 		"location": "Istaba",
+    "date": "18.11.2021",
+    "description": "This is a simple description",
 		"imgsrc": "https://cdn.shopify.com/s/files/1/0052/7237/1293/products/1024x1024-Socks-White-LB1_1024x1024.jpg?v=1569268398"
 	},
 	{
 		"id": 3,
 		"name": "Telefons",
 		"location": "Gaitenis",
+    "date": "19.11.2021",
+    "description": "This is a simple description",
 		"imgsrc": "https://images.unsplash.com/photo-1535312833541-9fb671a581b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGhvbmUlMjBvbiUyMGElMjB0YWJsZXxlbnwwfHwwfHw%3D&w=1000&q=80"
 	}
 ]

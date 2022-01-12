@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Platform} from 'react-native';
 import { List } from 'react-native-paper';
 import Constants from 'expo-constants';
+import { useNavigation } from '@react-navigation/native';
 
 export default function DdMenu({ navigation }) {
+  const nav = useNavigation();
+
   return (
-    <View style={styles.ddBackground}>
+    <View style={{position: 'absolute', width: '100%'}}>
     <List.Section style={styles.ddSelect}>
         <List.Item
         title="Edit item"
         left={props => <List.Icon {...props} icon="pencil-box-multiple" />}
-        onPress={() => {navigation.navigate('Editor View');}}
+        onPress={() => {nav.navigate('Editor');}}
         />
         <List.Item
         title="Delete item"
@@ -26,11 +29,5 @@ const styles = StyleSheet.create({
   ddSelect: {
     backgroundColor: '#FFFFFF',
     marginTop: 0,
-  },
-  ddBackground: {
-    backgroundColor: '#FFFFFF',
-    margin: 0,
-    flex: 1,
-    width: '100%',
-  },
+  }
 });
