@@ -1,0 +1,17 @@
+[
+	{
+		"id": 1,
+		"name": "Bumba",
+		"location": "Virtuve"
+	},
+	{
+		"id": 2,
+		"name": "Zeķes",
+		"location": "Istaba"
+	},
+	{
+		"id": 3,
+		"name": "Telefons",
+		"location": "Gaitenis"
+	}
+]

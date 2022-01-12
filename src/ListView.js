@@ -1,15 +1,39 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, Platform } from 'react-native';
+import * as React from 'react';
+import { useState } from 'react';
+import { Text, View, StyleSheet, Platform, FlatList, Button } from 'react-native';
 import { Appbar, List, Searchbar } from 'react-native-paper';
 import Constants from 'expo-constants';
+import objects from "./data.json"; // Data file for flatlist
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
+//import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import DdMenu from './dd-menu-list';
-
 export default function ListView({ navigation }) {
+  
   const [ddVisible, setDDVisible] = useState(true);
   const [searchVisible, setsearchVisible] = useState(false);
+  const [objectData, setObjectData] = React.useState(objects);
+  const ItemView = ({item}) => {
+    return (
+      <View>
+        <Text>{item.name}</Text>
+        <Text>{item.location}</Text>
+      </View>
+    )
+  }
+  const Item = ({name, location}) => (
+    <View>
+      <Text>{name}</Text>
+      <Text>{location}</Text>
+    </View>
+  )
+
+  const addElement = () => {
+    alert("Šeit pievieno jaunu ierakstu")
+  }
+
+
   return (
     <View style={ddVisible ? styles.bgShadowView : null}>
     <Appbar.Header
@@ -20,6 +44,15 @@ export default function ListView({ navigation }) {
     </Appbar.Header>
     {searchVisible && <Searchbar placeholder="Search" onSubmitEditing={() =>{setsearchVisible(searchVisible=>!searchVisible)}}/>}
     {ddVisible && <DdMenu  />}
+    <Button
+          title="Pievienot jaunu ierakstu"
+          onPress={addElement} />
+    <FlatList
+            keyExtractor = {item => item.id}  
+            data={objectData}
+            renderItem = {ItemView}
+    />
+
     </View>
   );
   
