@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
-import { Text, View, StyleSheet, Platform, FlatList, Button } from 'react-native';
-import { Appbar, List, Searchbar } from 'react-native-paper';
+import { Text, View, StyleSheet, Platform, FlatList, Button, Image } from 'react-native';
+import { Appbar, Searchbar } from 'react-native-paper';
 import Constants from 'expo-constants';
 import objects from "./data.json"; // Data file for flatlist
 
@@ -14,20 +13,26 @@ export default function ListView({ navigation }) {
   const [ddVisible, setDDVisible] = useState(true);
   const [searchVisible, setsearchVisible] = useState(false);
   const [objectData, setObjectData] = React.useState(objects);
-  const ItemView = ({item}) => {
-    return (
+  const ItemView = ({item}) => { return (
       <View>
-        <Text>{item.name}</Text>
-        <Text>{item.location}</Text>
+        <Text onPress={() => onItemClick(item)}>{item.name}, atrašanās vieta: {item.location}</Text>
+        <Image style={styles.img} source={{
+          uri: item.imgsrc
+        }}/>
       </View>
-    )
+  )}
+
+  const ItemSeparatorView = () => {
+    return (
+      <View
+        style={{ height: 0.5, width: '100%', backgroundColor: '#C8C8C8' }}
+      />
+    );
+  };
+
+  const onItemClick = (item) => {
+    alert('Objekts: '+item.name+', atrašanās vieta: '+item.location);
   }
-  const Item = ({name, location}) => (
-    <View>
-      <Text>{name}</Text>
-      <Text>{location}</Text>
-    </View>
-  )
 
   const addElement = () => {
     alert("Šeit pievieno jaunu ierakstu")
@@ -47,18 +52,23 @@ export default function ListView({ navigation }) {
     <Button
           title="Pievienot jaunu ierakstu"
           onPress={addElement} />
-    <FlatList
-            keyExtractor = {item => item.id}  
-            data={objectData}
-            renderItem = {ItemView}
-    />
 
+      <FlatList
+        ItemSeparatorComponent={ItemSeparatorView}
+        keyExtractor = {item => item.id}  
+      />
+        renderItem = {ItemView}
+        data={objectData}
     </View>
   );
   
 }
 
 const styles = StyleSheet.create({
+  img: {
+    width: 50,
+    height: 50
+  }
   menuBar: {
     padding: 0,
     margin: 0,
