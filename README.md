@@ -1,11 +1,13 @@
-# Sample Snack app
+# List-App
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!
+ABOUT:
+Our app is designed to remind people of item locations by mainly using pictures.
+The app stores a list of pictures of your uploaded items as well as their location and a small description of the item itself.
+The app can be used both online and offline.
+The difference between both of the options is that using the online option you’re able to save your lists to the cloud.
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Download** your project and use it with [expo-cli](https://docs.expo.io/get-started/installation).
-
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the `<>` button.
-
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.io/c/snack).
-
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).
+RESOURCES:
+FlatList example: https://snack.expo.dev/@vijaydemonz/flatlist-example
+Flatlist extraData informācija: https://reactnative.dev/docs/flatlist
+Attēlu pievienošana: https://snack.expo.dev/@aboutreact/image-example?session_id=snack-session-45GVESXWi
+Figma planning screen: https://www.figma.com/file/haOuqe9bMpb8ckqyNO9vy2/Mobile-App-Design?node-id=34%3A133
